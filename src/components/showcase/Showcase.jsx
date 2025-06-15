@@ -4,6 +4,21 @@ import { useSelector, useDispatch } from 'react-redux'
 import { handleSectionClick, handleOpenCloseClick } from '../../features/showcase/showcaseSlice'
 import SectionDropDown from './SectionDropDown'
 import { Link } from 'react-router-dom'
+import { motion } from 'motion/react'
+
+const transition = {
+  duration: 50,
+  times: [0, 0.2, 0.4, 0.6, 0.8],
+  ease: "easeInOut",
+}
+
+const shapes = [
+  "polygon(133.33px 315.47px,224.67px 316.47px,221.50px 233.74px,222.33px 142.00px,266.67px 84.53px,133.33px 84.53px)",
+  "polygon(133.33px 315.47px,224.67px 316.47px,221.50px 233.74px,268.33px 143.00px,266.67px 84.53px,133.33px 84.53px)",
+  "polygon(133.33px 315.47px,224.67px 316.47px,247.58px 266.60px,270.50px 216.74px,268.33px 143.00px,266.67px 84.53px,133.33px 84.53px)",
+  "polygon(133.33px 315.47px,224.67px 316.47px,268.58px 271.60px,270.50px 216.74px,268.33px 143.00px,266.67px 84.53px,133.33px 84.53px)",
+  "polygon(133.33px 315.47px,269.67px 316.47px,268.58px 271.60px,270.50px 216.74px,268.33px 143.00px,266.67px 84.53px,133.33px 84.53px)",
+];
 
 const Showcase = () => {
 
@@ -28,7 +43,14 @@ const Showcase = () => {
 
       { isOpen ?
         (
-        <div className='side-panel w-[10rem] bg-blue-500'>
+        <motion.div
+          animate={{ clipPath: shapes }}
+          transition={{
+            duration: 5,
+            times: [0, 0.2, 0.4, 0.6, 0.8]
+          }}
+          className='side-panel w-[20rem] bg-blue-500'
+        >
         <div className='side-sections' id='section-1'>
           <div className='drop-section'><Link to={'/'}> Home </Link></div>
           <div className='drop-section'>
@@ -60,7 +82,7 @@ const Showcase = () => {
           </div>
         </div>
         
-        </div>
+        </motion.div>
         ) : (<></>)
       }
     </>
