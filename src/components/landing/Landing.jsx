@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { use } from 'react'
 import './Landing.css'
 
 const Landing = () => {
+
+
+
   return (
     <div className='main-landing'>
       Landing

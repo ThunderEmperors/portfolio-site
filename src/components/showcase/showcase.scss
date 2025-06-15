@@ -7,15 +7,17 @@
 }
 
 .side-panel{  
-  width: 10%;
   height: 100%;
   max-height: 100%;
   display: flex;
   align-content: center;
   flex-direction: column;
   margin: 0;
+  position: absolute;
+  left: 0;
   padding: 0;
   border-right: 2px;
+  z-index: 50;
 }
 
 .skills{

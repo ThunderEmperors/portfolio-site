@@ -16,10 +16,11 @@
 }
 
 .dropdown-elem{
-  background-color: #333;
   position: relative;
-  display: inline-block;
-}
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 5rem 0.5rem 5rem;
+} 
 
 .dropdown-content a {
   color: black;
@@ -37,7 +38,8 @@
   background-color: #f9f9f9;
   z-index: 20;
   top: 100%;
-  left: 0;
+  width: 100%;
+  margin: auto;
 }
 
 .dropdown-elem:hover{

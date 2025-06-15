@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const showcaseSlice = createSlice({
   name: 'showcase',
   initialState:{
+    showPane : false,
     sections : [
       {
         'id' : 1,
@@ -15,14 +16,18 @@ export const showcaseSlice = createSlice({
     ]
   },
   reducers: {
-    handleclick: (state, action) => {
-      console.log(action.payload);
+    handleSectionClick: (state, action) => {
       state.sections[action.payload].isOpen = !state.sections[action.payload].isOpen; 
-      console.log(state.sections[action.payload].isOpen);
+    },
+    handleOpenCloseClick: (state) => {
+      state.showPane = !state.showPane
+    },
+    handleResetPane: (state) => {
+      state.showPane = false;
     }
   }
 })
 
-export const { handleclick } = showcaseSlice.actions
+export const { handleSectionClick, handleOpenCloseClick, handleResetPane } = showcaseSlice.actions
 
 export default showcaseSlice.reducer
