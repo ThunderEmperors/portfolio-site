@@ -4,6 +4,23 @@ import { useSelector, useDispatch } from 'react-redux'
 import { handleSectionClick, handleOpenCloseClick } from '../../features/showcase/showcaseSlice'
 import SectionDropDown from './SectionDropDown'
 import { Link } from 'react-router-dom'
+import { motion } from 'motion/react'
+import { AnimatePresence } from 'motion/react'
+
+const shapes = [
+  "ellipse(25% 50% at -25% 50%)",
+  "ellipse(170% 170% at -25% 50%)",
+  "ellipse(170% 170% at -25% 50%)",
+  "ellipse(180% 450% at -25% 50%)",
+];
+
+const shapes1 = [
+  "ellipse(180% 450% at -25% 50%)",
+  "ellipse(170% 170% at -25% 50%)",
+  "ellipse(170% 170% at -25% 50%)",
+  "ellipse(25% 50% at -25% 50%)",
+];
+
 
 const Showcase = () => {
 
@@ -28,7 +45,17 @@ const Showcase = () => {
 
       { isOpen ?
         (
-        <div className='side-panel w-[10rem] bg-blue-500'>
+        <AnimatePresence>
+        <motion.div
+          animate={{
+            clipPath: shapes,
+          }}
+          transition={{
+            duration: 2,
+            times: [0, 0.3, 0.6, 1]
+          }}
+          className='side-panel w-[20rem] bg-blue-500'
+        >
         <div className='side-sections' id='section-1'>
           <div className='drop-section'><Link to={'/'}> Home </Link></div>
           <div className='drop-section'>
@@ -60,8 +87,11 @@ const Showcase = () => {
           </div>
         </div>
         
-        </div>
-        ) : (<></>)
+        </motion.div>
+        </AnimatePresence>
+        ) : (
+          <></>
+          )
       }
     </>
   )
