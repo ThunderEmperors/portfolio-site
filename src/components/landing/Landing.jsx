@@ -5,19 +5,21 @@ import { useReducedMotion } from 'motion/react'
 
 const Landing = () => {
 
-  useEffect(() => {
-    const lenis = new Lenis({
-      autoRaf: true
-    });
+  const lenis = new Lenis();
 
-    lenis.on('scroll', (e) => {
-      console.log(e);
-    })
-  })
+  function raf(time){
+    lenis.raf(time);
+    console.log(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  
 
   return (
   <div className='container-div'>
-    <div className='main-landing h-[100vh] bg-black text-amber-200'>
+    <div className='main-landing h-[100%] bg-black text-amber-200'>
       Landing
     </div>
     <div className='skills h-[100vh] flex'>
