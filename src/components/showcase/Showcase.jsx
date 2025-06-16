@@ -17,10 +17,10 @@ const shapes = [
 
 const shapes1 = [
   "ellipse(150% 180% at -25% 50%)",
-  "ellipse(120% 150% at -25% 50%)",
-  "ellipse(90% 90% at -25% 50%)",
-  "ellipse(60% 60% at -25% 50%)",
-  "ellipse(25% 50% at -25% 50%)",
+  "ellipse(50% 75% at -25% 50%)",
+  "ellipse(0% 0% at -25% 50%)",
+  "ellipse(0% 0% at -25% 50%)",
+  "ellipse(0% 0% at -25% 50%)",
 ];
 
 const Showcase = () => {
@@ -40,8 +40,8 @@ const Showcase = () => {
 
   return (
     <>
-      <div className='absolute z-60 h-[2rem]' onClick={handleSectionOpen}>
-        Open/Close
+      <div className='fixed z-60 h-[2rem] p-4' onClick={handleSectionOpen}>
+      <svg  xmlns="http://www.w3.org/2000/svg"  width="2rem"  height="2rem"  viewBox="0 0 24 24"  fill="none"  stroke="white"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-align-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6l16 0" /><path d="M10 12l10 0" /><path d="M6 18l14 0" /></svg>
       </div>
       <AnimatePresence>
       { isOpen &&
@@ -50,11 +50,11 @@ const Showcase = () => {
           animate={{ clipPath: shapes }}
           transition={{
             duration: 2,
-            times: [0, 0.2, 0.6, 0.8],
+            times: [0, 0.2, 0.6, 1],
           }}
           // exit={{ opacity: [1, 0.8, 0.6, 0.3, 0], times: [0, 0.2, 0.6, 0.8, 1], duration: 1 }}
           exit={{ clipPath: shapes1}}
-          className='side-panel w-[20rem] bg-blue-500'
+          className='side-panel w-[12.5rem] bg-[#819A91] h-[100vh]'
         >
         <div className='side-sections' id='section-1'>
           <div className='drop-section'><Link to={'/'}> Home </Link></div>

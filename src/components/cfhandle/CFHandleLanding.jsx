@@ -6,7 +6,7 @@ const CFHandleLanding = () => {
   return (
     <>
 
-    <div className='main-landing'>
+    <div className='main-landing bg-black text-white'>
       <div className='landing-greeting'>
         Welcome to my CodeForces profile!
       </div>
