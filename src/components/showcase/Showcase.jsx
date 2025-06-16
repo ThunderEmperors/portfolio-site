@@ -5,19 +5,22 @@ import { handleSectionClick, handleOpenCloseClick } from '../../features/showcas
 import SectionDropDown from './SectionDropDown'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
+import { AnimatePresence } from 'motion/react'
 
-const transition = {
-  duration: 50,
-  times: [0, 0.2, 0.4, 0.6, 0.8],
-  ease: "easeInOut",
-}
 
 const shapes = [
-  "polygon(133.33px 315.47px,224.67px 316.47px,221.50px 233.74px,222.33px 142.00px,266.67px 84.53px,133.33px 84.53px)",
-  "polygon(133.33px 315.47px,224.67px 316.47px,221.50px 233.74px,268.33px 143.00px,266.67px 84.53px,133.33px 84.53px)",
-  "polygon(133.33px 315.47px,224.67px 316.47px,247.58px 266.60px,270.50px 216.74px,268.33px 143.00px,266.67px 84.53px,133.33px 84.53px)",
-  "polygon(133.33px 315.47px,224.67px 316.47px,268.58px 271.60px,270.50px 216.74px,268.33px 143.00px,266.67px 84.53px,133.33px 84.53px)",
-  "polygon(133.33px 315.47px,269.67px 316.47px,268.58px 271.60px,270.50px 216.74px,268.33px 143.00px,266.67px 84.53px,133.33px 84.53px)",
+  "ellipse(25% 50% at -25% 50%)",
+  "ellipse(170% 170% at -25% 50%)",
+  "ellipse(170% 170% at -25% 50%)",
+  "ellipse(180% 450% at -25% 50%)",
+];
+
+const shapes1 = [
+  "ellipse(150% 180% at -25% 50%)",
+  "ellipse(120% 150% at -25% 50%)",
+  "ellipse(90% 90% at -25% 50%)",
+  "ellipse(60% 60% at -25% 50%)",
+  "ellipse(25% 50% at -25% 50%)",
 ];
 
 const Showcase = () => {
@@ -40,15 +43,17 @@ const Showcase = () => {
       <div className='absolute z-60 h-[2rem]' onClick={handleSectionOpen}>
         Open/Close
       </div>
-
-      { isOpen ?
+      <AnimatePresence>
+      { isOpen &&
         (
         <motion.div
           animate={{ clipPath: shapes }}
           transition={{
-            duration: 5,
-            times: [0, 0.2, 0.4, 0.6, 0.8]
+            duration: 2,
+            times: [0, 0.2, 0.6, 0.8],
           }}
+          // exit={{ opacity: [1, 0.8, 0.6, 0.3, 0], times: [0, 0.2, 0.6, 0.8, 1], duration: 1 }}
+          exit={{ clipPath: shapes1}}
           className='side-panel w-[20rem] bg-blue-500'
         >
         <div className='side-sections' id='section-1'>
@@ -83,8 +88,9 @@ const Showcase = () => {
         </div>
         
         </motion.div>
-        ) : (<></>)
+        )
       }
+      </AnimatePresence>
     </>
   )
 }
