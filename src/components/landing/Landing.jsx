@@ -68,7 +68,7 @@ const Landing = () => {
         // markers: true,
         toggleActions: "start pause reverse pause",
       },
-      x: -width/1.8,
+      x: -width/1.6,
       duration: 2,
     });
 
@@ -82,7 +82,7 @@ const Landing = () => {
         // markers: true,
         toggleActions: "start pause reverse pause",
       },
-      x: width/2,
+      x: width/1.9,
       duration: 2,
     });
 
@@ -122,7 +122,7 @@ const Landing = () => {
         start: "top bottom",
         end: 'top top',
         scrub: true,
-        markers: true,
+        // markers: true,
         // pin: introTextRef.current
       },
       opacity: 1
@@ -150,11 +150,11 @@ const Landing = () => {
   <div className='container-div'>
     <div ref={nameContainerRef} className='main-landing h-[100%] bg-black text-[#ffc300]'>
       <div ref={triggerRef} className='absolute top-[100vh] left-0'></div>
-      <div ref={firstNameRef} className='first-name flex text-6xl pr-[2rem]'>Puranjay </div>
+      <div ref={firstNameRef} className='first-name flex text-6xl pr-[0.8rem]'>Puranjay </div>
       <div ref={mainImageContainerRef} className="image-container scale-0 absolute">
         <img src={landingbg3} className='h-screen w-screen object-cover'/>
       </div>
-      <div ref={lastNameRef} className='last-name flex text-6xl pl-[2rem]'>Joshi</div>
+      <div ref={lastNameRef} className='last-name flex text-6xl pl-[0.8rem]'>Joshi</div>
         <div ref={introTextRef} className='intro-text opacity-0 items-center justify-center flex absolute text-[#ffc300] text-6xl'>
             WELCOME
         </div>
