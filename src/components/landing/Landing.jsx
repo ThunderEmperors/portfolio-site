@@ -6,10 +6,14 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/src/all'
 import {ReactLenis, useLenis} from 'lenis/react'
+import useWindowDimensions from '../../app/useWindowDimensions'
+import portrait from '../../assets/portrait.jpg'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Landing = () => {
+
+  const { height, width } = useWindowDimensions();
 
   const lenis = new Lenis({
     smoothWheel: true,
@@ -20,6 +24,7 @@ const Landing = () => {
   const firstNameRef = useRef();
   const triggerRef = useRef();
   const lastNameRef = useRef();
+  const mainImageContainerRef = useRef();
 
   lenis.on('scroll', ScrollTrigger.update);
 
@@ -55,10 +60,10 @@ const Landing = () => {
         start: "bottom bottom",
         end: 'bottom top',
         scrub: true,
-        markers: true,
+        // markers: true,
         toggleActions: "start pause reverse pause",
       },
-      x: -200,
+      x: -width/1.9,
       duration: 2,
     });
 
@@ -69,13 +74,47 @@ const Landing = () => {
         start: "bottom bottom",
         end: 'bottom top',
         scrub: true,
-        markers: true,
+        // markers: true,
         toggleActions: "start pause reverse pause",
       },
-      x: 200,
+      x: width/1.9,
       duration: 2,
     });
+
+    // add scale scroll trigger to image
+    let tl = gsap.timeline({
+      scrollTrigger: {
+      trigger: triggerRef.current,
+      start: "bottom bottom",
+      end: 'bottom top',
+      scrub: true,
+      markers: true,
+      toggleActions: "start pause reverse pause",
+    }});
+    tl.to(mainImageContainerRef.current, {
+      scale: 1,
+      duration: 2,
+      delay: 0.1
+    })
+
+    // gsap.to(mainImageContainerRef.current, {
+    //   scrollTrigger: {
+    //     trigger: triggerRef.current,
+    //     start: "bottom bottom",
+    //     end: 'bottom top',
+    //     scrub: true,
+    //     markers: true,
+    //     toggleActions: "start pause reverse pause",
+    //   },
+    //   scale: 2,
+    //   duration: 2,
+    // });
+
   });
+
+
+
+  
   
 
   return (
@@ -84,6 +123,9 @@ const Landing = () => {
     <div ref={nameContainerRef} className='main-landing h-[100%] bg-black text-amber-900'>
       <div ref={triggerRef} className='absolute top-[100vh] left-0'></div>
       <div ref={firstNameRef} className='flex'>Puranjay</div>
+      <div ref={mainImageContainerRef} className="image-container scale-0 absolute">
+        <img src={portrait} className='h-screen w-screen object-cover'/>
+      </div>
       <div ref={lastNameRef} className='flex'>Joshi</div>
     </div>
     <div className='skills h-[100vh] flex'>
