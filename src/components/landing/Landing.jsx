@@ -15,8 +15,11 @@ const Landing = () => {
     smoothWheel: true,
     wheelMultiplier: 0.35,
   });
-  const landingRef = useRef();
+
+  const nameContainerRef = useRef();
+  const firstNameRef = useRef();
   const triggerRef = useRef();
+  const lastNameRef = useRef();
 
   lenis.on('scroll', ScrollTrigger.update);
 
@@ -33,18 +36,44 @@ const Landing = () => {
   requestAnimationFrame(raf);
 
   useGSAP(() => {
-    gsap.to(landingRef.current, {
+
+    //Make name container pinned
+    gsap.to(nameContainerRef.current, {
+      scrollTrigger: {
+        trigger: nameContainerRef.current,
+        start: "bottom bottom",
+        end: 'bottom top',
+        // markers: true,
+        pin: true
+      },
+    })
+
+    //Add movement to first name element
+    gsap.to(firstNameRef.current, {
       scrollTrigger: {
         trigger: triggerRef.current,
-        start: "50px 90%",
-        end: '50px 80%',
+        start: "bottom bottom",
+        end: 'bottom top',
         scrub: true,
         markers: true,
         toggleActions: "start pause reverse pause",
-        duration: 0.5
       },
-      opacity: 0,
-      duration: 0.5,
+      x: -200,
+      duration: 2,
+    });
+
+    //add movement to last name div
+    gsap.to(lastNameRef.current, {
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        start: "bottom bottom",
+        end: 'bottom top',
+        scrub: true,
+        markers: true,
+        toggleActions: "start pause reverse pause",
+      },
+      x: 200,
+      duration: 2,
     });
   });
   
@@ -52,9 +81,10 @@ const Landing = () => {
   return (
   <>
   <div className='container-div'>
-    <div  className='main-landing h-[100%] bg-black text-amber-200'>
-      <div ref={triggerRef} className='absolute top-[90vh] left-0'></div>
-      <div ref={landingRef} className='flex'>Landing</div>
+    <div ref={nameContainerRef} className='main-landing h-[100%] bg-black text-amber-900'>
+      <div ref={triggerRef} className='absolute top-[100vh] left-0'></div>
+      <div ref={firstNameRef} className='flex'>Puranjay</div>
+      <div ref={lastNameRef} className='flex'>Joshi</div>
     </div>
     <div className='skills h-[100vh] flex'>
       Skills
