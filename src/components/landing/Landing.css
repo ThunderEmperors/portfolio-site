@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Pompadour;
+  src: url('../../../public/fonts/01_APompadourSample.ttf');
+}
+
 .main-landing{
   flex-grow: 1;
   width: 100vw;
@@ -15,4 +20,16 @@
 .skills{
   justify-content: center;
   align-items: center;
+}
+
+.first-name{
+  font-family: Pompadour;
+}
+
+.last-name{
+  font-family: Pompadour;
+}
+
+.intro-text{
+  font-family: Pompadour;
 }
