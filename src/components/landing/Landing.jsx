@@ -28,6 +28,10 @@ const Landing = () => {
   const triggerRef = useRef();
   const triggerRefIntro = useRef();
   const introTextRef = useRef();
+  const textOneRef = useRef();
+  const textTwoRef = useRef();
+  const textThreeRef = useRef();
+  const textFourRef = useRef();
   const lastNameRef = useRef();
   const mainImageContainerRef = useRef();
 
@@ -47,15 +51,21 @@ const Landing = () => {
 
   useGSAP(() => {
 
-    //Make name container pinned
+    
+    // pin the name container text
     gsap.to(nameContainerRef.current, {
       scrollTrigger: {
-        trigger: nameContainerRef.current,
-        start: "bottom bottom",
-        end: 'bottom top',
+        trigger: triggerRef.current,
+        endTrigger: triggerRefIntro.current,
+        start: "top bottom",
+        end: 'top top',
+        scrub: true,
         // markers: true,
-        pin: true
+        pin: nameContainerRef.current,
+        // onLeave: ({progress, direction, isActive}) => console.log(progress, direction, isActive),
+        // onEnter: ({progress, direction, isActive}) => console.log(progress, direction, isActive),
       },
+      opacity: 1
     })
 
     //Add movement to first name element
@@ -99,49 +109,65 @@ const Landing = () => {
       },
       scale: 1,
       duration: 2,
-      delay: 0.1
+      delay: 0.5
     })
-
-    // make image stay on screen for new text
-    tl.to(nameContainerRef.current, {
-      scrollTrigger: {
-        trigger: triggerRefIntro.current,
-        start: "top bottom",
-        end: 'top top',
-        onEnter: ({progress, direction, isActive}) => console.log(progress, direction, isActive),
-        // markers: true,
-        pin: nameContainerRef.current
-      },
-    })
-
-
 
     gsap.to(introTextRef.current, {
       scrollTrigger: {
-        trigger: triggerRefIntro.current,
+        trigger: triggerRef.current,
+        endTrigger: triggerRefIntro.current,
         start: "top bottom",
-        end: 'top top',
+        end: "top top",
         scrub: true,
         // markers: true,
-        // pin: introTextRef.current
-      },
-      opacity: 1
+        pin: introTextRef.current
+      }
     })
 
+    // let introtl = gsap.timeline();
+    // introtl.to(textOneRef.current,{
+    //     scrollTrigger: {
+    //       trigger: triggerRef.current,
+    //       endTrigger: triggerRefIntro.current,
+    //       start: "top bottom",
+    //       end: 'top top',
+    //       scrub: true,
+    //       // markers: true,
+    //       // pin: introTextRef.current,
+    //       onLeave: ({progress, direction, isActive}) => console.log(progress, direction, isActive),
+    //       onEnter: ({progress, direction, isActive}) => console.log(progress, direction, isActive),
+    //     },
+    //     duration: 0.5,
+    //     opacity: 1
+    //   }).to(textTwoRef.current,{
+    //     scrollTrigger: {
+    //       trigger: triggerRef.current,
+    //       endTrigger: triggerRefIntro.current,
+    //       start: "top bottom",
+    //       end: 'top top',
+    //       scrub: true,
+    //       // markers: true,
+    //       // pin: introTextRef.current,
+    //       onLeave: ({progress, direction, isActive}) => console.log(progress, direction, isActive),
+    //       onEnter: ({progress, direction, isActive}) => console.log(progress, direction, isActive),
+    //     },
+    //     opacity: 1,
+    //     duration: 0.5
+    //   })
 
-
-    // gsap.to(mainImageContainerRef.current, {
-    //   scrollTrigger: {
-    //     trigger: triggerRef.current,
-    //     start: "bottom bottom",
-    //     end: 'bottom top',
-    //     scrub: true,
-    //     markers: true,
-    //     toggleActions: "start pause reverse pause",
-    //   },
-    //   scale: 2,
-    //   duration: 2,
-    // });
+    gsap.to('.welcome-text', {
+      scrollTrigger:{
+        trigger: triggerRef.current,
+        endTrigger: triggerRefIntro.current,
+        start: "top center",
+        end: "top top",
+        scrub: true
+      },
+      opacity: 1,
+      duration: 2,
+      stagger: 0.8
+    })
+    
 
   });
 
@@ -155,15 +181,19 @@ const Landing = () => {
         <img src={landingbg3} className='h-screen w-screen object-cover'/>
       </div>
       <div ref={lastNameRef} className='last-name flex text-6xl pl-[0.8rem]'>Joshi</div>
-        <div ref={introTextRef} className='intro-text opacity-0 items-center justify-center flex absolute text-[#ffc300] text-6xl'>
-            WELCOME
+        <div ref={introTextRef} className='intro-text items-center justify-center flex absolute text-[#ffc300] text-6xl'>
+            {/* <span ref={textOneRef} className='opacity-0'>A</span>
+            <span ref={textTwoRef} className='opacity-0'>GLIMPSE</span>
+            <span ref={textThreeRef} className='opacity-0'>INTO</span>
+            <span ref={textFourRef} className='opacity-0'>ME</span> */}
+            <span className='welcome-text opacity-0 p-5'>A</span>
+            <span className='welcome-text opacity-0 p-5'>GLIMPSE</span>
+            <span className='welcome-text opacity-0 p-5'>INTO</span>
+            <span className='welcome-text opacity-0 p-5'>ME</span>
         </div>
     </div>
     <div className='introduction h-[100vh] flex bg-black'>
-      <div ref={triggerRefIntro} className='relative top-0 left-0'></div>
-    </div>
-    <div className='skills h-[100vh] flex'>
-      Skills
+      <div ref={triggerRefIntro} className='relative top-[0vh] left-0'></div>
     </div>
   </div>
   </>
