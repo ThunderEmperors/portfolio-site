@@ -11,6 +11,7 @@ import portrait from '../../assets/portrait.jpg'
 import landingbg1 from '../../assets/landingbg1.jpeg'
 import landingbg2 from '../../assets/landingbg2.jpeg'
 import landingbg3 from '../../assets/landingbg3.jpeg'
+import Hobbies from './Hobbies'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -195,6 +196,7 @@ const Landing = () => {
     <div className='introduction h-[100vh] flex bg-black'>
       <div ref={triggerRefIntro} className='relative top-[0vh] left-0'></div>
     </div>
+    <Hobbies />
   </div>
   </>
   )
