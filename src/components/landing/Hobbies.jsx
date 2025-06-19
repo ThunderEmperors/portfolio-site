@@ -9,6 +9,7 @@ import personal2 from '../../assets/personal-pics/personal2.jpg'
 import personal3 from '../../assets/personal-pics/personal3.jpg'
 import personal4 from '../../assets/personal-pics/personal4.jpg'
 import useWindowDimensions from '../../app/useWindowDimensions';
+import './Hobbies.scss'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -18,12 +19,16 @@ const Hobbies = () => {
   const { height, width } = useWindowDimensions();
 
   const triggerHobbiesStartRef = useRef();
+  const firstTextRollInRef = useRef();
+  const secondTextRollInRef = useRef();
   const triggerHobbiesEndRef = useRef();
+  const picsContainerRef = useRef();
   const hobbiesContainerRef = useRef();
   const personal1ContainerRef = useRef();
   const personal2ContainerRef = useRef();
   const personal3ContainerRef = useRef();
   const personal4ContainerRef = useRef();
+  const softwareDevTextRef = useRef();
 
   const lenis = new Lenis({
     smoothWheel: true,
@@ -38,17 +43,22 @@ const Hobbies = () => {
   requestAnimationFrame(raf);
 
 
+  
   useGSAP(() => {
+    
 
-    gsap.to(hobbiesContainerRef.current, {
+    //main container ref for the pictures
+    gsap.to(picsContainerRef.current, {
       scrollTrigger: {
         trigger: triggerHobbiesStartRef.current,
+        // endTrigger: triggerHobbiesEndRef.current,
         start: "top bottom",
         end: "bottom top",
         // markers: true,
         onEnter: ({progress, direction, isActive}) => console.log(progress, direction, isActive),
         scrub: true,
-        pin: hobbiesContainerRef.current
+        pin: picsContainerRef.current,
+        pinSpacing: false,
       },
     });
 
@@ -112,12 +122,27 @@ const Hobbies = () => {
       duration: 2
     });
 
+
+    //Text roll in
+    gsap.to(softwareDevTextRef.current, {
+      scrollTrigger: {
+        trigger: secondTextRollInRef.current,
+        endTrigger: firstTextRollInRef.current,
+        start: `center ${height/4}px`,
+        end: "+=100px",
+        markers: true,
+        scrub: true,
+      },
+      x: -width/2,
+    })
+
   });
+  
 
   return (
   <>
     <div ref={hobbiesContainerRef} className='hobbies-container'>
-      <div className='flex h-[100vh] w-[100vw] justify-between items-center text-black'>
+      <div ref={picsContainerRef} className='images-container flex h-[100vh] w-[100vw]  justify-between items-center text-black'>
         <div ref={personal1ContainerRef} className="pic1-container flex w-[23vw] h-[50vh]">
           <img src={personal1} className='w-full h-full object-cover pl-[2vw]' />
         </div>
@@ -130,16 +155,31 @@ const Hobbies = () => {
         <div ref={personal4ContainerRef} className="pic4-container flex w-[23vw] h-[50vh]">
           <img src={personal4} className='w-full h-full object-cover pr-[2vw]' />
         </div>
-      </div>
-      <div className='h-[100vh]'>
-        <div ref={triggerHobbiesStartRef} className='relative top-[0vh] left-0'></div>
-      </div>
-      <div className='h-[100vh]'>
-        <div ref={triggerHobbiesEndRef} className='relative top-[0vh] left-0'></div>
-        <div className='temp-text'>
 
-        </div>
-      </div>  
+      </div>
+        <div ref={triggerHobbiesStartRef} className='trigger-hobbies-start relative top-[0vh] left-0'></div>
+      <div className='h-[100vh] flex relative'>
+
+        <div ref={firstTextRollInRef} className='first-text-roll-in relative top-[0vh] left-0'></div>
+        <div ref={secondTextRollInRef} className='second-text-roll-in relative top-[0vh] left-0'></div>
+        
+        <div className='triangle-area-1 flex items-center w-[100vw] absolute top-[75vh] h-[80vh] bg-amber-500'>
+          <div ref={softwareDevTextRef} className='software-dev-text absolute left-[100vw] flex'>
+            <span id='software-S' className='y-[5rem]'>S</span>
+            <span>O</span>
+            <span>F</span>
+            <span>T</span>
+            <span>W</span>
+            <span>A</span>
+            <span>R</span>
+            <span>E</span>
+            
+            <span>D</span>
+            <span>E</span>
+            <span>V</span>
+          </div>
+        </div> 
+      </div>
     </div>
   </>
   )
