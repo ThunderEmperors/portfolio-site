@@ -38,11 +38,11 @@ const Landing = () => {
 
   lenis.on('scroll', ScrollTrigger.update);
 
-  // gsap.ticker.add((time) => {
-  //   lenis.raf(time* 1000);
-  // })
+  gsap.ticker.add((time) => {
+    lenis.raf(time* 1000);
+  })
 
-  // gsap.ticker.lagSmoothing(0);
+  gsap.ticker.lagSmoothing(0);
   function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
@@ -113,17 +113,17 @@ const Landing = () => {
       delay: 0.5
     })
 
-    gsap.to(introTextRef.current, {
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        endTrigger: triggerRefIntro.current,
-        start: "top bottom",
-        end: "top top",
-        scrub: true,
-        // markers: true,
-        pin: introTextRef.current
-      }
-    })
+    // gsap.to(introTextRef.current, {
+    //   scrollTrigger: {
+    //     trigger: triggerRef.current,
+    //     endTrigger: triggerRefIntro.current,
+    //     start: "top bottom",
+    //     end: "top top",
+    //     scrub: true,
+    //     // markers: true,
+    //     pin: introTextRef.current
+    //   }
+    // })
 
     // let introtl = gsap.timeline();
     // introtl.to(textOneRef.current,{
@@ -155,7 +155,8 @@ const Landing = () => {
     //     opacity: 1,
     //     duration: 0.5
     //   })
-
+    
+    // stagger effect for "a glimpse into me"
     gsap.to('.welcome-text', {
       scrollTrigger:{
         trigger: triggerRef.current,
@@ -182,22 +183,23 @@ const Landing = () => {
         <img src={landingbg3} className='h-screen w-screen object-cover'/>
       </div>
       <div ref={lastNameRef} className='last-name flex text-6xl pl-[0.8rem]'>Joshi</div>
-        <div ref={introTextRef} className='intro-text items-center justify-center flex absolute text-[#ffc300] text-6xl'>
+      <div ref={introTextRef} className='intro-text items-center justify-center flex absolute text-[#ffc300] text-6xl'>
             {/* <span ref={textOneRef} className='opacity-0'>A</span>
             <span ref={textTwoRef} className='opacity-0'>GLIMPSE</span>
             <span ref={textThreeRef} className='opacity-0'>INTO</span>
             <span ref={textFourRef} className='opacity-0'>ME</span> */}
-            <span className='welcome-text opacity-0 p-5'>A</span>
-            <span className='welcome-text opacity-0 p-5'>GLIMPSE</span>
-            <span className='welcome-text opacity-0 p-5'>INTO</span>
-            <span className='welcome-text opacity-0 p-5'>ME</span>
-        </div>
+        <span className='welcome-text opacity-0 p-5'>A</span>
+        <span className='welcome-text opacity-0 p-5'>GLIMPSE</span>
+        <span className='welcome-text opacity-0 p-5'>INTO</span>
+        <span className='welcome-text opacity-0 p-5'>ME</span>
+      </div>
     </div>
     <div className='introduction h-[100vh] flex bg-black'>
       <div ref={triggerRefIntro} className='relative top-[0vh] left-0'></div>
     </div>
     <Hobbies />
   </div>
+    
   </>
   )
 }

@@ -17,8 +17,8 @@ function App() {
         <MainShadow />
         <Showcase />
         <Routes>
-          {/* <Route path='/' element={<Landing />} /> */}
-          <Route path='/' element={<Hobbies />} />
+          <Route path='/' element={<Landing />} />
+          {/* <Route path='/' element={<Hobbies />} /> */}
           <Route path='/CFHandle' element={<CFHandleLanding />} />
         </Routes>
         </section>

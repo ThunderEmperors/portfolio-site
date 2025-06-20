@@ -50,7 +50,7 @@ const Hobbies = () => {
   useGSAP(() => {
     
 
-    //main container ref for the pictures
+    //pin the main container ref for the pictures
     gsap.to(picsContainerRef.current, {
       scrollTrigger: {
         trigger: triggerHobbiesStartRef.current,
@@ -189,7 +189,7 @@ const Hobbies = () => {
         trigger: thirdTextRollInRef.current,
         start: `center ${height/4}px`,
         end: "+=150px",
-        markers: true,
+        // markers: true,
         scrub: true,
       },
       x: -width/1.7,
@@ -222,7 +222,7 @@ const Hobbies = () => {
   return (
   <>
     <div ref={hobbiesContainerRef} className='hobbies-container'>
-      <div ref={picsContainerRef} className='images-container flex h-[100vh] w-[100vw]  justify-between items-center text-black'>
+      <div ref={picsContainerRef} className='images-container pt-[5rem] flex h-[50vh] w-[100vw]  justify-between items-center text-black'>
         <div ref={personal1ContainerRef} className="pic1-container flex w-[23vw] h-[50vh]">
           <img src={personal1} className='w-full h-full object-cover pl-[2vw]' />
         </div>
@@ -237,7 +237,7 @@ const Hobbies = () => {
         </div>
 
       </div>
-        <div ref={triggerHobbiesStartRef} className='trigger-hobbies-start relative top-[0vh] left-0'></div>
+      <div ref={triggerHobbiesStartRef} className='trigger-hobbies-start relative top-[0vh] left-0'></div>
       <div className='h-[100vh] mb-[13vh] flex relative'>
 
         <div ref={firstTextRollInRef} className='first-text-roll-in relative top-[0vh] left-0'></div>
