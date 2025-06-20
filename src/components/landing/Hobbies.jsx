@@ -4,10 +4,10 @@ import React, { useRef } from 'react'
 import ScrollTrigger from 'gsap/src/ScrollTrigger';
 import Lenis from 'lenis';
 import { marker } from 'motion/react-client';
-import personal1 from '../../assets/personal-pics/personal1.jpg'
-import personal2 from '../../assets/personal-pics/personal2.jpg'
-import personal3 from '../../assets/personal-pics/personal3.jpg'
-import personal4 from '../../assets/personal-pics/personal4.jpg'
+import personal1 from '../../assets/personal1.jpg'
+import personal2 from '../../assets/personal2.jpg'
+import personal3 from '../../assets/personal3.jpg'
+import personal4 from '../../assets/personal4.jpg'
 import useWindowDimensions from '../../app/useWindowDimensions';
 import './Hobbies.scss'
 
