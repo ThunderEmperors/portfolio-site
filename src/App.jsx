@@ -5,6 +5,7 @@ import CFHandleLanding from './components/cfhandle/CFHandleLanding'
 import Landing from './components/landing/Landing'
 import './App.css'
 import MainShadow from './components/MainShadow'
+import Hobbies from './components/landing/Hobbies'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Showcase />
         <Routes>
           <Route path='/' element={<Landing />} />
+          {/* <Route path='/' element={<Hobbies />} /> */}
           <Route path='/CFHandle' element={<CFHandleLanding />} />
         </Routes>
         </section>
