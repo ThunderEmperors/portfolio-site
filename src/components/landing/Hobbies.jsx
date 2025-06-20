@@ -261,7 +261,7 @@ const Hobbies = () => {
         </div> 
       </div>
       <div className='w-[100vw] top-[75vh] '>
-        <div className='triangle-area-2 flex items-center h-[60vh] bg-cyan-900'>
+        <div className='triangle-area-2 flex items-center h-[60vh] bg-[#9fba47]'>
           <div ref={webDevTextRef} className='web-dev-text absolute w-[50vw] -left-[50vw] flex'>
             <span id='web-elem' className='-translate-y-55'>W</span>
             <span id='web-elem' className='translate-y-40'>E</span>

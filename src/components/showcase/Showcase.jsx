@@ -54,7 +54,7 @@ const Showcase = () => {
           }}
           // exit={{ opacity: [1, 0.8, 0.6, 0.3, 0], times: [0, 0.2, 0.6, 0.8, 1], duration: 1 }}
           exit={{ clipPath: shapes1}}
-          className='side-panel w-[12.5rem] bg-[#819A91] h-[100vh]'
+          className='side-panel w-[12.5rem] bg-[#7f845b] h-[100vh]'
         >
         <div className='side-sections' id='section-1'>
           <div className='drop-section'><Link to={'/'}> Home </Link></div>
