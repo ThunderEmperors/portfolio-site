@@ -21,6 +21,7 @@ const Hobbies = () => {
   const triggerHobbiesStartRef = useRef();
   const firstTextRollInRef = useRef();
   const secondTextRollInRef = useRef();
+  const thirdTextRollInRef = useRef();
   const triggerHobbiesEndRef = useRef();
   const picsContainerRef = useRef();
   const hobbiesContainerRef = useRef();
@@ -29,6 +30,8 @@ const Hobbies = () => {
   const personal3ContainerRef = useRef();
   const personal4ContainerRef = useRef();
   const softwareDevTextRef = useRef();
+  const webDevTextRef = useRef();
+  const debaterTextRef = useRef();
 
   const lenis = new Lenis({
     smoothWheel: true,
@@ -123,20 +126,97 @@ const Hobbies = () => {
     });
 
 
-    //Text roll in
+    //Software Text roll in
     gsap.to(softwareDevTextRef.current, {
       scrollTrigger: {
-        trigger: secondTextRollInRef.current,
-        endTrigger: firstTextRollInRef.current,
+        // trigger: secondTextRollInRef.current,
+        trigger: firstTextRollInRef.current,
         start: `center ${height/4}px`,
-        end: "+=100px",
+        end: "+=200px",
+        // markers: true,
+        scrub: true,
+      },
+      x: -width/1.7,
+    })
+
+    var swElems = gsap.utils.toArray('#software-elem');
+    //Y translation for each element in software text
+    swElems.forEach((elem, id) => {
+      gsap.to(elem, {
+        scrollTrigger:{
+          // trigger: secondTextRollInRef.current,
+          trigger: firstTextRollInRef.current,
+          start: `center ${height/4}px`,
+          end: "+=200px",
+          // markers: true,
+          scrub: true,
+        },
+        y: 0
+      })
+    })
+
+    //Webdev Text roll in
+    gsap.to(webDevTextRef.current, {
+      scrollTrigger: {
+        trigger: secondTextRollInRef.current,
+        start: `center ${height/4}px`,
+        end: "+=150px",
+        // markers: true,
+        scrub: true,
+      },
+      x: width/1.2,
+    })
+
+    var webDevElems = gsap.utils.toArray('#web-elem');
+    //Y translation for each element in webdev text
+    webDevElems.forEach((elem, id) => {
+      gsap.to(elem, {
+        scrollTrigger:{
+          // trigger: secondTextRollInRef.current,
+          trigger: secondTextRollInRef.current,
+          start: `center ${height/4}px`,
+          end: "+=150px",
+          // markers: true,
+          scrub: true,
+        },
+        y: 0
+      })
+    })
+
+    //Debater Text roll in
+    gsap.to(debaterTextRef.current, {
+      scrollTrigger: {
+        trigger: thirdTextRollInRef.current,
+        start: `center ${height/4}px`,
+        end: "+=150px",
         markers: true,
         scrub: true,
       },
-      x: -width/2,
+      x: -width/1.7,
     })
 
+    var debaterElems = gsap.utils.toArray('#debater-elem');
+    //Y translation for each element in debater text
+    debaterElems.forEach((elem, id) => {
+      gsap.to(elem, {
+        scrollTrigger:{
+          // trigger: secondTextRollInRef.current,
+          trigger: thirdTextRollInRef.current,
+          start: `center ${height/4}px`,
+          end: "+=150px",
+          // markers: true,
+          scrub: true,
+        },
+        y: 0
+      })
+    })
+
+
+    //end of useGsap lol
   });
+
+
+
   
 
   return (
@@ -158,27 +238,50 @@ const Hobbies = () => {
 
       </div>
         <div ref={triggerHobbiesStartRef} className='trigger-hobbies-start relative top-[0vh] left-0'></div>
-      <div className='h-[100vh] flex relative'>
+      <div className='h-[100vh] mb-[13vh] flex relative'>
 
         <div ref={firstTextRollInRef} className='first-text-roll-in relative top-[0vh] left-0'></div>
-        <div ref={secondTextRollInRef} className='second-text-roll-in relative top-[0vh] left-0'></div>
-        
-        <div className='triangle-area-1 flex items-center w-[100vw] absolute top-[75vh] h-[80vh] bg-amber-500'>
+        <div ref={secondTextRollInRef} className='second-text-roll-in relative top-[25vh] left-0'></div>
+        <div ref={thirdTextRollInRef} className='third-text-roll-in relative top-[75vh] left-0'></div>
+        <div className='triangle-area-1 flex items-center w-[100vw] absolute top-[75vh] h-[60vh] bg-amber-500'>
           <div ref={softwareDevTextRef} className='software-dev-text absolute left-[100vw] flex'>
-            <span id='software-S' className='y-[5rem]'>S</span>
-            <span>O</span>
-            <span>F</span>
-            <span>T</span>
-            <span>W</span>
-            <span>A</span>
-            <span>R</span>
-            <span>E</span>
+            <span id='software-elem' className='-translate-y-5'>S</span>
+            <span id='software-elem' className='translate-y-35'>O</span>
+            <span id='software-elem' className='-translate-y-30'>F</span>
+            <span id='software-elem' className='translate-y-20'>T</span>
+            <span id='software-elem' className='-translate-y-45'>W</span>
+            <span id='software-elem' className='-translate-y-35'>A</span>
+            <span id='software-elem' className='translate-y-50'>R</span>
+            <span id='software-elem' className='pr-[1.5rem] -translate-y-55'>E</span>
             
             <span>D</span>
             <span>E</span>
             <span>V</span>
           </div>
         </div> 
+      </div>
+      <div className='w-[100vw] top-[75vh] '>
+        <div className='triangle-area-2 flex items-center h-[60vh] bg-cyan-900'>
+          <div ref={webDevTextRef} className='web-dev-text absolute w-[50vw] -left-[50vw] flex'>
+            <span id='web-elem' className='-translate-y-55'>W</span>
+            <span id='web-elem' className='translate-y-40'>E</span>
+            <span id='web-elem' className='pr-[1.5rem] -translate-y-40'>B</span>
+            <span id='web-elem' className='translate-y-35'>D</span>
+            <span id='web-elem' className='-translate-y-30'>E</span>
+            <span id='web-elem' className='translate-y-20'> V</span>
+          </div>
+        </div>
+        <div className='h-[60vh]'>
+          <div ref={debaterTextRef} className='debater-text absolute w-[50vw] left-[100vw] flex'>
+            <span id='debater-elem' className='-translate-y-10'>D</span>
+            <span id='debater-elem' className='translate-y-15'>E</span>
+            <span id='debater-elem' className='-translate-y-15'>B</span>
+            <span id='debater-elem' className='translate-y-21'>A</span>
+            <span id='debater-elem' className='-translate-y-26'>T</span>
+            <span id='debater-elem' className='translate-y-26'>E</span>
+            <span id='debater-elem' className='-translate-y-30'>R</span>
+          </div>
+        </div>
       </div>
     </div>
   </>
