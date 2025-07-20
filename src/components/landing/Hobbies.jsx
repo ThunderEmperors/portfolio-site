@@ -5,9 +5,14 @@ import ScrollTrigger from 'gsap/src/ScrollTrigger';
 import Lenis from 'lenis';
 import { marker } from 'motion/react-client';
 import personal1 from '../../assets/personal1.jpg'
-import personal2 from '../../assets/personal2.jpg'
-import personal3 from '../../assets/personal3.jpg'
-import personal4 from '../../assets/personal4.jpg'
+// import personal2 from '../../assets/personal2.jpg'
+// import personal3 from '../../assets/personal3.jpg'
+// import personal4 from '../../assets/personal4.jpg'
+
+import personal2 from '../../assets/placeholder1.jpg'
+import personal3 from '../../assets/placeholder2.jpg'
+import personal4 from '../../assets/placeholder2.jpg'
+
 import useWindowDimensions from '../../app/useWindowDimensions';
 import './Hobbies.scss'
 
@@ -35,7 +40,7 @@ const Hobbies = () => {
 
   const lenis = new Lenis({
     smoothWheel: true,
-    wheelMultiplier: 0.35,
+    wheelMultiplier: 0.4,
   });
 
   function raf(time) {
@@ -76,7 +81,7 @@ const Hobbies = () => {
         // pin: personal1ContainerRef.current
       },
 
-      y: -height/4,
+      y: -height/8,
       duration: 2
     });
 
@@ -91,7 +96,7 @@ const Hobbies = () => {
         // pin: personal1ContainerRef.current
       },
 
-      y: height/4,
+      y: height/8,
       duration: 1
     });
 
